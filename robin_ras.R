@@ -78,8 +78,8 @@ plt=ggplot() +
   # add graticules projected to Robinson
   geom_path(data=NE_graticules_rob, aes(long, lat, group=group), linetype="dotted", color="grey50", size = 0.25) +
   # add graticule labels - latitude and longitude
-  geom_text(data = lbl.Y.prj, aes(x = X.prj, y = Y.prj, label = lbl), color="grey50", size=2.5) +
-  geom_text(data = lbl.X.prj, aes(x = X.prj, y = Y.prj, label = lbl), color="grey50", size=2.5) +
+  geom_text(data = lbl.Y.prj[c(TRUE, FALSE),], aes(x = X.prj, y = Y.prj, label = lbl), color="grey50", size=2.5) +
+  geom_text(data = lbl.X.prj[c(TRUE, FALSE),], aes(x = X.prj, y = Y.prj, label = lbl), color="grey50", size=2.5) +
   # the default, ratio = 1 in coord_fixed ensures that one unit on the x-axis is the same length as one unit on the y-axis
   coord_fixed(ratio = 1) +
   geom_tile(data=test_df, aes(x=x, y=y, fill=value),alpha=1)+
