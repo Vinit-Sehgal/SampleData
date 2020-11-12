@@ -1,6 +1,7 @@
 mat2ras=function(mat, Longitude, Latitude, plot_ind){
 # Converts a matrix to raster using Lat-long vectors and 2-d matrix of the dataset.
   
+  #Import libraries
 require(reshape2)
 require(maps)
   
