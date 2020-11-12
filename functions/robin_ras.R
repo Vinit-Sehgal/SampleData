@@ -3,10 +3,10 @@ robin_ras=function(ras, map_col,name,brk,lim,na.rm=T){
 # ======================================================================================
 # Create a simple world map in Robinson projection with labeled graticules using ggplot
 # ======================================================================================
+#Source code edited from: 
 #https://seethedatablog.wordpress.com/2016/12/23/r-simple-world-map-robinson-ggplot/
 
 # Set a working directory with setwd() or work with an RStudio project
-
 # __________ Set libraries
 library(rgdal)      # for spTransform() & project()
 library(ggplot2)    # for ggplot()
@@ -48,16 +48,9 @@ names(lbl.Y.prj)[1:2] <- c("X.prj","Y.prj")
 prj.coord <- project(cbind(lbl.X$lon, lbl.X$lat), proj=PROJ)
 lbl.X.prj <- cbind(prj.coord, lbl.X)
 names(lbl.X.prj)[1:2] <- c("X.prj","Y.prj")
-
-
 pr <- projectRaster(ras, crs=PROJ, method='bilinear',res=36000)
-#plot(pr)
 
 # IMPORT SHAPEFILE
-#coastline  <- readOGR("C:/Users/vinit/Documents/ArcGIS/world_shp_diss/worls_shp_diss.shp")
-#coastline_proj=spTransform(x = coastline, CRSobj = PROJ)
-#plot(coastline_proj)
-
 cropped <- crop(x = pr, y = extent(NE_countries_rob))
 masked <- mask(x = cropped, mask = NE_countries_rob)
 #plot(masked)
@@ -101,9 +94,6 @@ plt=ggplot() +
         legend.text=element_text(size=16))+
   ggtitle(name)
 plt
-# save to pdf and png file
-#ggsave("map_draft_1.pdf", width=28, height=13.5, units="cm")
-#ggsave("map_draft_1.png", width=22, height=13.5, units="cm", dpi=600)
 
 # REFERENCES:
 # This link was useful for graticule idea
