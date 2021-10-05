@@ -1,2 +1,2 @@
 # SampleData-master
- Sample dataset for large-scale data visualization
+ Sample dataset for large-scale data visualization workshop.
