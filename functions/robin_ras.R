@@ -41,11 +41,11 @@ NE_box_rob        <- spTransform(NE_box, CRSobj = PROJ)
 
 # project long-lat coordinates for graticule label data frames 
 # (two extra columns with projected XY are created)
-prj.coord <- project(cbind(lbl.Y$lon, lbl.Y$lat), proj=PROJ)
+prj.coord <- rgdal::project(cbind(lbl.Y$lon, lbl.Y$lat), proj=PROJ)
 lbl.Y.prj <- cbind(prj.coord, lbl.Y)
 names(lbl.Y.prj)[1:2] <- c("X.prj","Y.prj")
 
-prj.coord <- project(cbind(lbl.X$lon, lbl.X$lat), proj=PROJ)
+prj.coord <- rgdal::project(cbind(lbl.X$lon, lbl.X$lat), proj=PROJ)
 lbl.X.prj <- cbind(prj.coord, lbl.X)
 names(lbl.X.prj)[1:2] <- c("X.prj","Y.prj")
 pr <- projectRaster(ras, crs=PROJ, method='bilinear',res=36000)
